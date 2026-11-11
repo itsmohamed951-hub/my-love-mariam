@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meryam's World ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #fff5f8;
+    color: #663344;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: #ff8eaf;
+    animation: float 7s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    20% { opacity: .8; }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* LOGIN */
+
+#login {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg,#ffe0eb,#fff5f8,#ffc4d6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 40px 25px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 40px #d77b9b40;
+}
+
+.login-box h1 {
+    color: #d94d7d;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ffc1d5;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.main-btn {
+    background: linear-gradient(135deg,#f06c99,#d94d7d);
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.main-btn:hover {
+    transform: scale(1.05);
+}
+
+#error {
+    color: #e33b66;
+    margin-top: 10px;
+}
+
+/* MAIN */
+
+#website {
+    display: none;
+}
+
+section {
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#ffe0eb,#fff5f8);
+}
+
+.hero h1 {
+    font-size: clamp(35px,8vw,65px);
+    color: #d94d7d;
+}
+
+.hero p {
+    font-size: 19px;
+    margin: 15px 0 25px;
+}
+
+.subtitle {
+    color: #d94d7d;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: #d94d7d;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.card {
+    max-width: 750px;
+    margin: 25px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px #d77b9b20;
+    line-height: 2.2;
+}
+
+/* COUNTER */
+
+.counter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.time-box {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 85px;
+    box-shadow: 0 5px 20px #d77b9b20;
+}
+
+.time-box span {
+    display: block;
+    font-size: 28px;
+    color: #d94d7d;
+    font-weight: bold;
+}
+
+/* STORY */
+
+.story-item {
+    background: white;
+    margin: 20px auto;
+    max-width: 650px;
+    padding: 25px;
+    border-radius: 20px;
+    border-right: 5px solid #ed82a5;
+    text-align: right;
+}
+
+/* PHOTOS */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    max-width: 750px;
+    margin: 30px auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #d77b9b30;
+    transition: .3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* MUSIC */
+
+.music-btn {
+    background: #d94d7d;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 17px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #fbd5e2;
+    padding: 40px 20px;
+    text-align: center;
+    color: #b83e68;
+    position: relative;
+    z-index: 2;
+}
+
+@media(max-width:500px) {
+    .gallery img {
+        height: 180px;
+    }
+
+    section {
+        padding: 65px 15px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+
+<div id="login">
+    <div class="login-box">
+        <h1>❤️ Meryam ❤️</h1>
+        <p>A little world made just for you</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter our secret password"
+        >
+
+        <button class="main-btn" onclick="login()">
+            Open My Heart ❤️
+        </button>
+
+        <p id="error"></p>
+    </div>
+</div>
+
+<div id="website">
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <p class="subtitle">A SPECIAL PLACE FOR SOMEONE SPECIAL</p>
+
+    <h1>Welcome Meryam ❤️</h1>
+
+    <p>Welcome to your own little world.</p>
+
+    <button class="main-btn"
+    onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">
+        Discover Our Story 💗
+    </button>
+
+</section>
+
+<!-- OUR STORY -->
+
+<section id="story">
+
+    <p class="subtitle">OUR LITTLE UNIVERSE</p>
+
+    <h2>حكايتنا ❤️</h2>
+
+    <div class="card">
+        من يوم 18 أكتوبر 2026 بدأت حكاية جميلة،
+        وحكاية نفسي نكمل نكتب فيها كل يوم فصل جديد.
+
+        <br>
+
+        يمكن الكلام مش دايماً يعرف يوصف اللي جوايا،
+        بس وجودك في حياتي حاجة جميلة جداً.
+    </div>
+
+</section>
+
+<!-- COUNTER -->
+
+<section>
+
+    <p class="subtitle">EVERY SECOND MATTERS</p>
+
+    <h2>بقالنا مع بعض ❤️</h2>
+
+    <div class="counter">
+
+        <div class="time-box">
+            <span id="days">0</span>
+            الأيام
+        </div>
+
+        <div class="time-box">
+            <span id="hours">0</span>
+            الساعات
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">0</span>
+            الدقائق
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">0</span>
+            الثواني
+        </div>
+
+    </div>
+
+</section>
+
+<!-- REASONS -->
+
+<section>
+
+    <p class="subtitle">WHY YOU ARE SPECIAL</p>
+
+    <h2>عارفة أنا بحبك ليه؟ 🥹</h2>
+
+    <div class="card">
+        ❤️ عشان ضحكتك بتفرق معايا.
+
+        <br>
+
+        ❤️ عشان وجودك بيخلّي الأيام أحلى.
+
+        <br>
+
+        ❤️ عشان تفاصيلك الصغيرة مهمة عندي.
+
+        <br>
+
+        ❤️ عشان أنتِ شخص مميز في حياتي.
+
+        <br>
+
+        ❤️ وعشان ببساطة أنتِ مريم.
+    </div>
+
+</section>
+
+<!-- SADNESS -->
+
+<section>
+
+    <p class="subtitle">WHEN YOU FEEL SAD</p>
+
+    <h2>لما تكوني زعلانة 🥺</h2>
+
+    <div class="card">
+
+        يا مريم، عايزك تعرفي إنك مش مضطرة
+        تشيلي كل حاجة لوحدك.
+
+        <br>
+
+        اتكلمي واحكيلي اللي جواكي،
+        وأنا هسمعك وهحاول أكون جنبك
+        وأساندك على قد ما أقدر.
+
+        <br>
+
+        متنسيش إنك تستاهلي كل حاجة حلوة،
+        وإن راحتك وسعادتك مهمين جداً.
+
+        <br>
+
+        You are never alone ❤️
+
+    </div>
+
+</section>
+
+<!-- PHOTOS -->
+
+<section>
+
+    <p class="subtitle">OUR MEMORIES</p>
+
+    <h2>ذكرياتنا 📸</h2>
+
+    <div class="gallery">
+
+        <img src="photo1.jpg" alt="Our memory 1">
+
+        <img src="photo2.jpg" alt="Our memory 2">
+
+        <img src="photo3.jpg" alt="Our memory 3">
+
+        <img src="photo4.jpg" alt="Our memory 4">
+
+    </div>
+
+</section>
+
+<!-- MUSIC -->
+
+<section>
+
+    <p class="subtitle">OUR SONG</p>
+
+    <h2>أغنيتنا 🎵</h2>
+
+    <div class="card">
+
+        كلمة - رامي صبري ❤️
+
+        <br><br>
+
+        <audio id="song" src="song.mp3"></audio>
+
+        <button class="music-btn" onclick="toggleMusic()">
+            ▶️ تشغيل الأغنية
+        </button>
+
+        <p style="font-size:12px;margin-top:15px">
+            اضغطي هنا واسمعي أغنيتنا ❤️
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FINAL MESSAGE -->
+
+<section>
+
+    <p class="subtitle">YOU & ME</p>
+
+    <h2>To My Beautiful Meryam ❤️</h2>
+
+    <div class="card">
+
+        يا مريم، دي مجرد صفحة صغيرة،
+        بس جواها كلام كتير نفسي تعرفيه.
+
+        <br>
+
+        أنا مبسوط إنك بقيتي جزء من حياتي،
+        ونفسي نفضل نشارك بعض تفاصيل أيامنا
+        ونبني ذكريات حلوة مع بعض.
+
+        <br>
+
+        ويا رب الأيام الجاية تكون أحلى لينا،
+        ونحقق كل حاجة نفسنا فيها.
+
+        <br><br>
+
+        <strong style="color:#d94d7d;font-size:23px">
+            I Love You, Meryam ❤️
+        </strong>
+
+    </div>
+
+</section>
+
+<footer>
+    Made with Love ❤️
+
+    <br>
+
+    Just for Meryam.
+
+    <br>
+
+    18 / 10 / 2026
+</footer>
+
+</div>
+
+<script>
+
+/* PASSWORD */
+
+function login() {
+
+    const pass = document.getElementById("password").value;
+
+    if(pass === "29/6/2009") {
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+
+        document.body.style.overflowX = "hidden";
+
+        createHearts();
+
+        updateCounter();
+
+        setInterval(updateCounter,1000);
+
+    } else {
+
+        document.getElementById("error").innerText =
+        "Wrong password! Try again ❤️";
+
+    }
+}
+
+/* ENTER KEY */
+
+document.getElementById("password").addEventListener("keypress",function(e){
+
+    if(e.key === "Enter") login();
+
+});
+
+/* COUNTER */
+
+function updateCounter() {
+
+    const start = new Date(2026,9,18,0,0,0);
+
+    const now = new Date();
+
+    let diff = Math.max(0,now-start);
+
+    const days = Math.floor(diff / 86400000);
+
+    const hours = Math.floor((diff % 86400000)/3600000);
+
+    const minutes = Math.floor((diff % 3600000)/60000);
+
+    const seconds = Math.floor((diff % 60000)/1000);
+
+    document.getElementById("days").innerText = days;
+
+    document.getElementById("hours").innerText = hours;
+
+    document.getElementById("minutes").innerText = minutes;
+
+    document.getElementById("seconds").innerText = seconds;
+
+}
+
+/* FLOATING HEARTS */
+
+function createHearts() {
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random()*100 + "vw";
+
+        heart.style.fontSize = (15+Math.random()*25)+"px";
+
+        heart.style.animationDuration = (5+Math.random()*5)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),10000);
+
+    },600);
+
+}
+
+/* MUSIC */
+
+function toggleMusic() {
+
+    const song = document.getElementById("song");
+
+    const button = document.querySelector(".music-btn");
+
+    if(song.paused) {
+
+        song.play();
+
+        button.innerText = "⏸️ إيقاف الأغنية";
+
+    } else {
+
+        song.pause();
+
+        button.innerText = "▶️ تشغيل الأغنية";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
